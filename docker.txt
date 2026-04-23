@@ -1,0 +1,20 @@
+Docker é uma plataforma de containerização que permite empacotar uma aplicação e todas as suas dependencias (bibliotecas, configurações, runtime) em uma unidade isolada chamada container.
+Feito pra construir, rodar e transferir sua aplicação da sua maquina local, para qualquer ambiente. Se sobe o ambiente todo dentro do container para o servidor e não apenas a aplicação!
+
+Container x Virtualização
+  - Virtualização cria máquinas virtuais completas, cada uma com seu próprio sistema operacional, rodando sobre um hypervisor. É mais pesado -- cada VM reserva CPU, RAM e discos dedicados.
+  - Containers compartilham o kernel do sistema operacional host e isolam apenas o processo/aplicação. São muito mais leves, iniciam em segundos e consomem muito menos recursos.
+A analogia classica, VMs são como casas separadas (cada uma com sua própria estrutura), containers são como apartamentos no mesmo prédio (compartilham a fundação/estrutura).
+
+groups $USER
+Mostra uma lista e o docker precisa estar nela
+
+sudo usermod -aG docker $USER
+  - Adiciona o docker ao grupo do linux para não precisar usar sudo em todo comando
+
+O ciclo é: se cria uma imagem(que são as especificações do que se precisa para rodar sua aplicação) através de um Dockerfile, e a imagem roda dentro de um container.
+
+DockerHub: Repositório de imagens Docker // Um tipo de Registry, como o ECR da AWS.
+(Recomendado criar uma conta própria para testes)
+
+Dockerfile = Arquivo de configuração da imagem que será usada pelo container

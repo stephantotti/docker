@@ -1,0 +1,11 @@
+docker build -t "tag" .
+  - Cria a imagem com uma tag no diretório raiz
+
+docker images
+  - Lista as imagens criadas
+
+docker run "nome da imagem"
+  - Roda a aplicação
+
+docker context use "nome do contexto"
+  - Troca o contexto a ser utilizado para criar imagens
