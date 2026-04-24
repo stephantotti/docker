@@ -18,3 +18,23 @@ DockerHub: Repositório de imagens Docker // Um tipo de Registry, como o ECR da 
 (Recomendado criar uma conta própria para testes)
 
 Dockerfile = Arquivo de configuração da imagem que será usada pelo container
+
+Uma Imagem contém:
+  - Sistema Operacional
+  - Libraries
+  - Arquivos apps
+  - Variáveis de Ambiente
+Tudo que sua aplicação precisa para rodar.
+
+Um Container contém:
+  - Ambiente Isolado
+  - Pode ser Iniciado ou Parado / Pela CLI ou Docker Desktop
+  - Considerado um Processo que roda dentro de uma máquinas
+
+*A aplicação é convertida em uma imagem através do Dockerfile, para então ser colocada para rodar dentro de um container.
+
+***IMPORTANTE***
+Não é recomendado buildar imagens, criar Dockerfile e todo o resto do procedimento, com o usuário root do linux.
+Primeiro se executa tudo que precisa como root, e depois troca o usuário, para um usuário com permissões limitadas.
+
+Após fazer o upload da imagem da sua máquina para o DockerHub, ela fica disponível para download para qualquer outra máquina!

@@ -1,5 +1,8 @@
-docker build -t "tag" .
+docker build -t "tag" .  // Se usar build na mesma pasta o docker atualiza a imagem, não cria uma nova.
   - Cria a imagem com uma tag no diretório raiz
+
+docker rmi "nome da imagem"
+  - Remove a imagem selecionada
 
 docker images
   - Lista as imagens criadas
@@ -9,3 +12,42 @@ docker run "nome da imagem"
 
 docker context use "nome do contexto"
   - Troca o contexto a ser utilizado para criar imagens
+
+docker ps
+  - Lista os containers
+
+docker ps -a
+  - Lista os containers parados ou em execução
+
+docker run -it "ubuntu" // -it = iterativo
+  - Um exemplo de como rodar alguma distro sem precisar baixar/instalar e já entrando no bash
+  root@"id da imagem" - É o padrão
+
+docker logs "container ID"
+  - Mostra o erro caso o container tenha parado.
+
+docker tag "imagem original" "nova tag"
+  - Comando para adicionar uma tag a uma imagem
+
+docker tag "minha imagem:tag" "minha imagem:nova tag"
+  - Comando para mudar a tag de uma imagem
+* Necessário dar um docker images depois pra ver se a imagem antiga permaneceu
+
+docker login
+  - Autenticação no docker
+
+Exemplo de como subir uma imagem ao DockerHub:
+docker tag stephantotti/app:1.0.0 stephantotti/my-projects:v1.0.0 // Nomeia a imagem com a tag correta 
+dockerdocker push stephantotti/my-projects:v1.0.0 // Faz upload para o repositório
+stephantotti é o user do DockerHub / my-projects é o nome do repositório / v1.0.0 é a tag da imagem
+
+Passo a Passo básico para subir uma aplicação
+
+docker build -t "nome da pasta:versão" .
+docker run -it "nome da pasta" sh (shell)
+# docker run -dp 3000:3000 -v todo-data:/etc/todos app:1.0.0 // Quando é necessário abrir a porta do container e a porta da nossa máquina e salvar em uma pasta do seu sistema no lugar de salvar no container. #
+Após isso o Hash longo que aparece é o ID do container
+
+Exemplo de como transferir uma imagem de uma máquina para a outra sem utilizar o DockerHub
+docker image save -o "nome do arquivo salvo.tar" "nome da imagem"  ex: save -o imagemv1.0.0.tar imagem:v1.0.0 (o nome do arquivo não aceita :)
+docker image load -i "nome do arquivo.tar"
