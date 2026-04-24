@@ -1,0 +1,32 @@
+docker run "nome da imagem ou ID"
+  - Iniciar um container
+docker run -d --name "nome do container"
+  - Para iniciar com um nome de container a sua escolha ou o DockerHub escolhe um aleatório!
+
+docker stop "nome do container ou ID"
+  - Parar um container
+
+docker start "nome do container ou ID"
+  - Para iniciar um container que já existe e está parado.
+
+docker rm "nome do container ou ID"
+  - Remove o container
+
+docker kill "nome do container ou ID"
+  - "Mata o container"
+
+docker logs "opção" "container ID ou nome do container" // --help aparecem as opções // geralmente se usa o -f ou -n
+  - Olhar o log do container
+
+docker volume create "nome do volume"
+  - Para criar um volume persistente local
+docker exec -it "nome do container" sh // Para conferir se o volume foi criado  
+
+docker volume inspect "nome do volume"
+  - Lista as configurações do volume
+
+docker cp "imagem de origem:diretório/arquivo" .
+  - Copiar arquivos do container para o Host local // ou ao contrário, só alterar a ordem de origem e destino
+
+***IMPORTANTE***
+Para apagar tudo relacionado ao docker, imagens, containers, volumes, é mais rápido pelo Docker Desktop!

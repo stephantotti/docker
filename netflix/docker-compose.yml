@@ -1,0 +1,28 @@
+version: "3.8" # Para verificar a versão atual, entra na página docker compose file > legacy versions > about versions and upgrading!, Nessa página a direita também tem infos de como passar configurações no docker compose.
+               # Existe um warning de que o version vai se tornar obsoleto, mas por enquanto ainda é necessário para usar o docker compose.
+services:
+  frontend:
+    depends_on: 
+      - backend
+    build: ./frontend # Caminho do Dockerfile do frontend
+    ports:
+      - 3000:3000 # Info no Dockerfile do frontend. // http://localhost:3000/ é onde o frontend estará disponível.
+  backend: 
+    depends_on: 
+      - db
+    build: ./backend # Caminho do Dockerfile do backend
+    ports: 
+      - 3001:3001 # Info no Dockerfile do backend
+    environment: 
+      DB_URL: mongodb://db/vidly  # Conexão do backend com o banco de dados, o nome do serviço do banco de dados é "db" e o nome do volume é "vidly", então a URL de conexão é "mongodb://db/vidly"
+    command: ./docker-entrypoint.sh # Comando para iniciar o backend, o script "docker-entrypoint.sh" é responsável por iniciar o servidor do backend, ele deve estar presente na pasta do backend.
+
+  db:
+    image: mongo:4.0-xenial # Não tem uma pasta com Dockerfile, usa a imagem do DockerHub, nesse caso a imagem do MongoDB
+    ports:
+      - 27017:27017
+    volumes:
+      - vidly:/data/db # Onde o conteúdo do banco de dados será armazenado, o nome do volume é "vidly" e o caminho dentro do container é "/data/db"
+
+volumes:
+  vidly:

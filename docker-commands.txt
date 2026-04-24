@@ -7,7 +7,7 @@ docker rmi "nome da imagem"
 docker images
   - Lista as imagens criadas
 
-docker run "nome da imagem"
+docker run "nome da imagem" // Pode ser necessário utilizar o -d "detached" antes do nome da imagem, para liberar o terminal.
   - Roda a aplicação
 
 docker context use "nome do contexto"
@@ -45,8 +45,9 @@ Passo a Passo básico para subir uma aplicação
 
 docker build -t "nome da pasta:versão" .
 docker run -it "nome da pasta" sh (shell)
-# docker run -dp 3000:3000 -v todo-data:/etc/todos app:1.0.0 // Quando é necessário abrir a porta do container e a porta da nossa máquina e salvar em uma pasta do seu sistema no lugar de salvar no container. #
-Após isso o Hash longo que aparece é o ID do container
+# docker run -dp 3000:3000 -v todo-data:/etc/todos stephantotti/my-projects:v1.0.0 // Quando é necessário abrir a porta do container e a porta da nossa máquina e salvar em uma pasta do seu sistema no lugar de salvar no container. #
+-dp 3000:3000 // O primeiro número de porta é da sua máquina(host) o segundo é do container. Você pode escolher a porta que desejar. 
+Após isso a Hash longa que aparece é o ID do container
 
 Exemplo de como transferir uma imagem de uma máquina para a outra sem utilizar o DockerHub
 docker image save -o "nome do arquivo salvo.tar" "nome da imagem"  ex: save -o imagemv1.0.0.tar imagem:v1.0.0 (o nome do arquivo não aceita :)

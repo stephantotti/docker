@@ -1,0 +1,18 @@
+docker compose up / -d = detached, caso o terminal fique travado
+  - Roda o docker compose e cria os containers especificados no arquivo.
+
+docker-compose down
+  - Desativa a aplicação
+
+docker-compose logs
+  - Comando para analisar os logs
+
+Docker compose é um Yaml, ele le de cima para baixo as instruções de configuração, e as executa na ordem.
+Ele sempre vai procurar pelo nome de arquivo docker-compose.yml, mas da pra trabalhar em cima disso com variáveis ou -fique
+
+docker-compose --help
+  - Aparecem as inumeras opções de interação
+
+
+Se você logar dentro de um container e executar o ifconfig, você consegue o IP do container
+Dentro do container se voce der um ping "nome do serviço" backend por exemplo, você consegue o ip do backend.
